@@ -1,0 +1,3 @@
+/home/Mrpumpkin/Documents/VSC/C/platform2d/build/_deps/raylib-subbuild/CMakeFiles/raylib-populate.dir
+/home/Mrpumpkin/Documents/VSC/C/platform2d/build/_deps/raylib-subbuild/CMakeFiles/edit_cache.dir
+/home/Mrpumpkin/Documents/VSC/C/platform2d/build/_deps/raylib-subbuild/CMakeFiles/rebuild_cache.dir
