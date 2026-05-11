@@ -26,7 +26,7 @@ Platform platforms[] = {
 
 int main(void)
 {
-    enemy[0] = enemy_main(910.0f, 0.0f, 100.0f, 100.0f);
+    enemy[0] = enemy_main(910.0f, 0.0f, 100.0f, 100.0f, 2.0f, 100.0f);
 
     Camera2D camera = {0};
     camera.target = (Vector2){player.box.x + 20.0f, player.box.y + 20.0f};
@@ -68,6 +68,16 @@ int main(void)
                     player.box.x = platforms[i].box.x + platforms[i].box.width;
             }
         }
+        for (int i = 0; i < enemy_size; i++)
+        {
+            if (CheckCollisionRecs(player.box, enemy[i].box))
+            {
+                if (player.box.x == enemy->box.x && player.box.y == enemy->box.y)
+                {
+                    player.HP -= 1;
+                }
+            }
+        }
 
         player.velocity.y += gravity;
         player.box.y += player.velocity.y;
@@ -91,18 +101,18 @@ int main(void)
             }
         }
 
-        enemy->velocity += gravity;
-        enemy->box.y += enemy->velocity;
+        enemy->velocity.y += gravity;
+        enemy->box.y += enemy->velocity.y;
         enemy->isGrounded = false;
 
         for (int i = 0; i < platform_size; i++)
         {
             if (CheckCollisionRecs(enemy->box, platforms[i].box))
             {
-                if (enemy->velocity > 0)
+                if (enemy->velocity.y > 0)
                 {
                     enemy->box.y = platforms[i].box.y - enemy->box.height;
-                    enemy->velocity = 0.0f;
+                    enemy->velocity.y = 0.0f;
                     enemy->isGrounded = true;
                 }
                 else if (player.velocity.y < 0)
@@ -120,9 +130,11 @@ int main(void)
         ClearBackground(GRAY);
         BeginMode2D(camera);
         player_render(&player, texplayer);
-        printf("X | %f , Y | %f\n", player.box.x, player.box.y);
+
+        // printf("Hp%d\n", player.HP);
         for (int i = 0; i < enemy_size; i++)
         {
+            printf("X | %f , Y | %f\n", enemy->box.x, enemy->box.y);
             enemy_render(&enemy[i], texenemy);
         }
 
