@@ -16,7 +16,7 @@ Player player = {
     },
     .isGrounded = true,
     .velocity = 0.0f,
-    .HP = 10};
+    .HP = 3};
 Enemy enemy[5];
 
 const float gravity = 0.6f;
@@ -27,6 +27,7 @@ Platform platforms[] = {
 int main(void)
 {
     enemy[0] = enemy_main(910.0f, 0.0f, 100.0f, 100.0f, 2.0f, 100.0f);
+    bool is_running = true;
 
     Camera2D camera = {0};
     camera.target = (Vector2){player.box.x + 20.0f, player.box.y + 20.0f};
@@ -38,13 +39,24 @@ int main(void)
     int enemy_size = sizeof(enemy[0]) / sizeof(enemy[0]);
     player.box.x = (ScreenWidth - player.box.width) / 1;
     InitWindow(ScreenWidth, ScreenHeight, "GAME");
+
     Texture2D texplayer = LoadTexture("Textures/Texpumpkin.png");
     Texture2D texwall = LoadTexture("Textures/Texwall.png");
     Texture2D texenemy = LoadTexture("Textures/Texapple.png");
 
+    float mid_W = ScreenWidth / 2;
+    float mid_H = ScreenHeight / 2;
+
+    float cooldownDuration = 1.0f;
+    float cooldownTimer = 0.0f;
+
     SetTargetFPS(60);
     while (!WindowShouldClose())
     {
+        if (cooldownTimer > 0.0f)
+        {
+            cooldownTimer -= GetFrameTime();
+        }
 
         for (int i = 0; i < platform_size; i++)
         {
@@ -53,10 +65,18 @@ int main(void)
 
         for (int i = 0; i < enemy_size; i++)
         {
-            enemy_update(&enemy[i]);
+            if (player.HP > 0)
+            {
+                player_update(&player);
+                enemy_update(&enemy[i]);
+                is_running = false;
+            }
         }
-
-        player_update(&player);
+        if (player.HP > 0)
+        {
+            player_update(&player);
+            is_running = false;
+        }
 
         for (int i = 0; i < platform_size; i++)
         {
@@ -72,9 +92,13 @@ int main(void)
         {
             if (CheckCollisionRecs(player.box, enemy[i].box))
             {
-                if (player.box.x == enemy->box.x && player.box.y == enemy->box.y)
+                if (cooldownTimer <= 0.0f)
                 {
-                    player.HP -= 1;
+                    if (player.box.width == enemy->box.width && player.box.height == enemy->box.height)
+                    {
+                        player.HP -= 1;
+                    }
+                    cooldownTimer = cooldownDuration;
                 }
             }
         }
@@ -131,10 +155,9 @@ int main(void)
         BeginMode2D(camera);
         player_render(&player, texplayer);
 
-        // printf("Hp%d\n", player.HP);
         for (int i = 0; i < enemy_size; i++)
         {
-            printf("X | %f , Y | %f\n", enemy->box.x, enemy->box.y);
+            // printf("X | %f , Y | %f\n", enemy->box.x, enemy->box.y);
             enemy_render(&enemy[i], texenemy);
         }
 
@@ -144,6 +167,20 @@ int main(void)
         }
 
         EndMode2D();
+        if (player.HP <= 0)
+        {
+            player.HP = 0;
+            DrawText(TextFormat("AHAHAHAHAHA!!!!", player.HP), 20, 400, 50, BLACK);
+        }
+        else
+        {
+            DrawText(TextFormat("HP %d", player.HP), 20, 400, 50, BLACK);
+        }
+
+        if (player.HP <= 0)
+        {
+            DrawText(TextFormat("GAME OVER!"), 250, 200, 50, RED);
+        }
         EndDrawing();
     }
     UnloadTexture(texplayer);
