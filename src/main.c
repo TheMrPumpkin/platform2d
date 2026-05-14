@@ -53,6 +53,7 @@ int main(void)
     SetTargetFPS(60);
     while (!WindowShouldClose())
     {
+
         if (cooldownTimer > 0.0f)
         {
             cooldownTimer -= GetFrameTime();
@@ -146,6 +147,18 @@ int main(void)
                 }
             }
         }
+        for (int i = 0; i < enemy_size; i++)
+        {
+            if (player.HP <= 0)
+            {
+                if (IsKeyPressed(KEY_R))
+                {
+                    player.HP = 3;
+                    player.box = (Rectangle){700.0, 350.0, 100.0, 100.0};
+                    enemy[i].box = (Rectangle){910.0, 0.0, 100.0, 100.0};
+                };
+            }
+        }
 
         camera.target = (Vector2){player.box.x + 20, player.box.y + 20};
 
@@ -180,6 +193,7 @@ int main(void)
         if (player.HP <= 0)
         {
             DrawText(TextFormat("GAME OVER!"), 250, 200, 50, RED);
+            DrawText(TextFormat("PRESS R TO CONTINUE!"), 100, 250, 50, BLACK);
         }
         EndDrawing();
     }
