@@ -11,7 +11,6 @@ void player_update(Player *player)
         player->box.y -= 5;
         player->velocity.y = -12.0f;
         player->isGrounded = false;
-        printf("JUMP ACTIVATED!\n");
     }
 
     if (IsKeyDown(KEY_RIGHT))
