@@ -12,6 +12,8 @@ typedef struct
     float minX;
     float maxX;
     float direction;
+    int HP;
+    bool show_it;
 
 } Enemy;
 Enemy enemy_main(float x, float y, float width, float height, float speed, float patrolRange);

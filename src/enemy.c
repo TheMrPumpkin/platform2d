@@ -15,6 +15,8 @@ Enemy enemy_main(float x, float y, float width, float height, float speed, float
     enemy.minX = x - patrolRange; // 810
     enemy.maxX = x + patrolRange; // 1010
     enemy.direction = 1;
+    enemy.HP = 3;
+    enemy.show_it = true;
 
     return enemy;
 }
@@ -38,6 +40,9 @@ void enemy_update(Enemy *enemy)
 }
 void enemy_render(Enemy *enemy, Texture2D texenemy)
 {
-    DrawTexture(texenemy, enemy->box.x, enemy->box.y, WHITE);
-    DrawRectangleLinesEx(enemy->box, 2, GREEN);
+    if (enemy->show_it)
+    {
+        DrawTexture(texenemy, enemy->box.x, enemy->box.y, WHITE);
+        DrawRectangleLinesEx(enemy->box, 2, GREEN);
+    }
 }

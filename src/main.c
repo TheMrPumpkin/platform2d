@@ -89,20 +89,6 @@ int main(void)
                     player.box.x = platforms[i].box.x + platforms[i].box.width;
             }
         }
-        for (int i = 0; i < enemy_size; i++)
-        {
-            if (CheckCollisionRecs(player.box, enemy[i].box))
-            {
-                if (cooldownTimer <= 0.0f)
-                {
-                    if (player.box.width == enemy->box.width && player.box.height == enemy->box.height)
-                    {
-                        player.HP -= 1;
-                    }
-                    cooldownTimer = cooldownDuration;
-                }
-            }
-        }
 
         player.velocity.y += gravity;
         player.box.y += player.velocity.y;
@@ -150,15 +136,36 @@ int main(void)
 
         for (int i = 0; i < enemy_size; i++)
         {
-            if (CheckCollisionRecs(player.box, enemy[i].box))
+
+            if (enemy[i].HP > 0)
             {
-                if ((player.box.y + player.box.height) < (enemy[i].box.y + 20))
+                enemy[i].show_it = true;
+                if (CheckCollisionRecs(player.box, enemy[i].box))
                 {
-                    player.velocity.y = -12.0f;
-                    player.box.y = enemy[i].box.y - player.box.height;
+                    enemy->show_it = true;
+                    if ((player.box.y + player.box.height) < (enemy[i].box.y + 20))
+                    {
+
+                        enemy[i].HP -= 1;
+                        player.velocity.y = -12.0f;
+                        player.box.y = enemy[i].box.y - player.box.height;
+                    }
+                    else if (cooldownTimer <= 0.0f)
+                    {
+                        if (player.box.width == enemy[i].box.width)
+                        {
+                            cooldownTimer = cooldownDuration;
+                            player.HP -= 1;
+                        }
+                    }
                 }
             }
+            else
+            {
+                enemy[i].show_it = false;
+            }
         }
+
         for (int i = 0; i < platform_size; i++)
         {
             if (CheckCollisionRecs(player.box, platforms[i].box))
@@ -184,6 +191,7 @@ int main(void)
                 if (IsKeyPressed(KEY_R))
                 {
                     player.HP = 3;
+                    enemy[i].HP = 3;
                     player.box = (Rectangle){700.0, 350.0, 100.0, 100.0};
                     enemy[i].box = (Rectangle){910.0, 0.0, 100.0, 100.0};
                 };
@@ -201,6 +209,7 @@ int main(void)
         for (int i = 0; i < enemy_size; i++)
         {
             // printf("X | %f , Y | %f\n", enemy->box.x, enemy->box.y);
+            printf("HP ENEMY %d\n", enemy->HP);
             enemy_render(&enemy[i], texenemy);
         }
 
