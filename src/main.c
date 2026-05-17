@@ -142,7 +142,7 @@ int main(void)
                 enemy[i].show_it = true;
                 if (CheckCollisionRecs(player.box, enemy[i].box))
                 {
-                    enemy->show_it = true;
+                    enemy[i].show_it = true;
                     if ((player.box.y + player.box.height) < (enemy[i].box.y + 20))
                     {
 
