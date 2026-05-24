@@ -4,6 +4,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/game.dir/src/enemy.c.o.d"
   "CMakeFiles/game.dir/src/main.c.o"
   "CMakeFiles/game.dir/src/main.c.o.d"
+  "CMakeFiles/game.dir/src/map.c.o"
+  "CMakeFiles/game.dir/src/map.c.o.d"
   "CMakeFiles/game.dir/src/platform.c.o"
   "CMakeFiles/game.dir/src/platform.c.o.d"
   "CMakeFiles/game.dir/src/player.c.o"

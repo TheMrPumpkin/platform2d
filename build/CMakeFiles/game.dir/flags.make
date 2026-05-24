@@ -6,5 +6,5 @@ C_DEFINES = -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP
 
 C_INCLUDES = -I/home/Mrpumpkin/Documents/VSC/C/platform2d/src -I/home/Mrpumpkin/Documents/VSC/C/platform2d/build/_deps/raylib-src/src -I/home/Mrpumpkin/Documents/VSC/C/platform2d/build/_deps/raylib-src/src/external/glfw/include
 
-C_FLAGS = 
+C_FLAGS = -std=gnu11
 

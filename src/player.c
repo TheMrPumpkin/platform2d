@@ -8,7 +8,7 @@ void player_update(Player *player)
     if (IsKeyPressed(KEY_UP) && player->isGrounded)
     {
 
-        player->box.y -= 5;
+        // player->box.y -= 5;
         player->velocity.y = -12.0f;
         player->isGrounded = false;
     }

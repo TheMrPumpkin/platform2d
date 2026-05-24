@@ -3,29 +3,29 @@
 #include "player.h"
 #include "platform.h"
 #include "enemy.h"
-
+#include "map.h"
 const int ScreenWidth = 800;
 const int ScreenHeight = 450;
 
-Player player = {
-    .box = {
-        .x = 0,
-        .y = 0,
-        .width = ScreenWidth / 8,
-        .height = ScreenHeight / 4.5,
-    },
-    .isGrounded = true,
-    .velocity = 0.0f,
-    .HP = 3};
-Enemy enemy[5];
-
-const float gravity = 0.6f;
-Platform platforms[] = {
-    {.box = {.x = 400, .y = 450, .width = ScreenWidth / 1, .height = ScreenHeight / 12}},
-    {.box = {.x = 400, .y = 250, .width = ScreenWidth / 8, .height = ScreenHeight / 2}}};
-
 int main(void)
 {
+    Player player = {
+        .box = {
+            .x = 0,
+            .y = 0,
+            .width = ScreenWidth / 8,
+            .height = ScreenHeight / 4.5,
+        },
+        .isGrounded = true,
+        .velocity = 0.0f,
+        .HP = 3};
+    Enemy enemy[5];
+
+    const float gravity = 0.6f;
+    Platform platforms[] = {
+        {.box = {.x = 400, .y = 450, .width = ScreenWidth / 1, .height = ScreenHeight / 12}},
+        {.box = {.x = 400, .y = 250, .width = ScreenWidth / 8, .height = ScreenHeight / 2}}};
+
     enemy[0] = enemy_main(910.0f, 0.0f, 100.0f, 100.0f, 2.0f, 100.0f);
     bool is_running = true;
 
@@ -36,16 +36,15 @@ int main(void)
     camera.zoom = 1.0f;
 
     int platform_size = sizeof(platforms) / sizeof(platforms[0]);
-    int enemy_size = sizeof(enemy[0]) / sizeof(enemy[0]);
-    player.box.x = (ScreenWidth - player.box.width) / 1;
+    int enemy_size = sizeof(enemy) / sizeof(enemy[0]);
+    player.box.y = 3.0;
+    player.box.x = 32.0;
+
     InitWindow(ScreenWidth, ScreenHeight, "GAME");
-
+    LoadMapCSV("Tiled/world_test.csv");
+    Texture2D tileset = LoadTexture("Textures/grass.png");
     Texture2D texplayer = LoadTexture("Textures/Texpumpkin.png");
-    Texture2D texwall = LoadTexture("Textures/Texwall.png");
     Texture2D texenemy = LoadTexture("Textures/Texapple.png");
-
-    float mid_W = ScreenWidth / 2;
-    float mid_H = ScreenHeight / 2;
 
     float cooldownDuration = 1.2f;
     float cooldownTimer = 0.0f;
@@ -79,38 +78,9 @@ int main(void)
             is_running = false;
         }
 
-        for (int i = 0; i < platform_size; i++)
-        {
-            if (CheckCollisionRecs(player.box, platforms[i].box))
-            {
-                if (IsKeyDown(KEY_RIGHT))
-                    player.box.x = platforms[i].box.x - player.box.width;
-                if (IsKeyDown(KEY_LEFT))
-                    player.box.x = platforms[i].box.x + platforms[i].box.width;
-            }
-        }
-
         player.velocity.y += gravity;
         player.box.y += player.velocity.y;
         player.isGrounded = false;
-
-        for (int i = 0; i < platform_size; i++)
-        {
-            if (CheckCollisionRecs(player.box, platforms[i].box))
-            {
-                if (player.velocity.y > 0)
-                {
-                    player.box.y = platforms[i].box.y - player.box.height;
-                    player.velocity.y = 0.0f;
-                    player.isGrounded = true;
-                }
-                else if (player.velocity.y < 0)
-                {
-                    player.box.y = platforms[i].box.y + platforms[i].box.height;
-                    player.velocity.y = 0.0f;
-                }
-            }
-        }
 
         enemy->velocity.y += gravity;
         enemy->box.y += enemy->velocity.y;
@@ -122,7 +92,7 @@ int main(void)
             {
                 if (enemy->velocity.y > 0)
                 {
-                    enemy->box.y = platforms[i].box.y - enemy->box.height;
+                    enemy->box.y = platforms[i].box.y - enemy[i].box.height; // בודק שלא נופל מהעולם
                     enemy->velocity.y = 0.0f;
                     enemy->isGrounded = true;
                 }
@@ -166,24 +136,6 @@ int main(void)
             }
         }
 
-        for (int i = 0; i < platform_size; i++)
-        {
-            if (CheckCollisionRecs(player.box, platforms[i].box))
-            {
-                if (player.velocity.y > 0)
-                {
-                    player.box.y = platforms[i].box.y - player.box.height;
-                    player.velocity.y = 0.0f;
-                    player.isGrounded = true;
-                }
-                else if (player.velocity.y < 0)
-                {
-                    player.box.y = platforms[i].box.y + platforms[i].box.height;
-                    player.velocity.y = 0.0f;
-                }
-            }
-        }
-
         for (int i = 0; i < enemy_size; i++)
         {
             if (player.HP <= 0)
@@ -202,20 +154,15 @@ int main(void)
 
         BeginDrawing();
         DrawFPS(10, 10);
-        ClearBackground(GRAY);
+        ClearBackground(SKYBLUE);
         BeginMode2D(camera);
         player_render(&player, texplayer);
-
+        DrawTileMap(tileset);
         for (int i = 0; i < enemy_size; i++)
         {
             // printf("X | %f , Y | %f\n", enemy->box.x, enemy->box.y);
-            printf("HP ENEMY %d\n", enemy->HP);
+            // printf("HP ENEMY %d\n", enemy->HP);
             enemy_render(&enemy[i], texenemy);
-        }
-
-        for (int i = 0; i < platform_size; i++)
-        {
-            platform_render(&platforms[i], texwall);
         }
 
         EndMode2D();
@@ -237,7 +184,6 @@ int main(void)
         EndDrawing();
     }
     UnloadTexture(texplayer);
-    UnloadTexture(texwall);
     CloseWindow();
 
     return 0;

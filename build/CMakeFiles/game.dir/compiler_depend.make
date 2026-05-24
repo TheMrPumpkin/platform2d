@@ -35,8 +35,40 @@ CMakeFiles/game.dir/src/enemy.c.o: /home/Mrpumpkin/Documents/VSC/C/platform2d/sr
 CMakeFiles/game.dir/src/main.c.o: /home/Mrpumpkin/Documents/VSC/C/platform2d/src/main.c \
   _deps/raylib-src/src/raylib.h \
   /home/Mrpumpkin/Documents/VSC/C/platform2d/src/enemy.h \
+  /home/Mrpumpkin/Documents/VSC/C/platform2d/src/map.h \
   /home/Mrpumpkin/Documents/VSC/C/platform2d/src/platform.h \
   /home/Mrpumpkin/Documents/VSC/C/platform2d/src/player.h \
+  /usr/include/bits/floatn-common.h \
+  /usr/include/bits/floatn.h \
+  /usr/include/bits/libc-header-start.h \
+  /usr/include/bits/long-double.h \
+  /usr/include/bits/stdio_lim.h \
+  /usr/include/bits/time64.h \
+  /usr/include/bits/timesize.h \
+  /usr/include/bits/types.h \
+  /usr/include/bits/types/FILE.h \
+  /usr/include/bits/types/__FILE.h \
+  /usr/include/bits/types/__fpos64_t.h \
+  /usr/include/bits/types/__fpos_t.h \
+  /usr/include/bits/types/__mbstate_t.h \
+  /usr/include/bits/types/cookie_io_functions_t.h \
+  /usr/include/bits/types/struct_FILE.h \
+  /usr/include/bits/typesizes.h \
+  /usr/include/bits/wordsize.h \
+  /usr/include/features-time64.h \
+  /usr/include/features.h \
+  /usr/include/gnu/stubs-64.h \
+  /usr/include/gnu/stubs.h \
+  /usr/include/stdc-predef.h \
+  /usr/include/stdio.h \
+  /usr/include/sys/cdefs.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/stdarg.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/stdbool.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/stddef.h
+
+CMakeFiles/game.dir/src/map.c.o: /home/Mrpumpkin/Documents/VSC/C/platform2d/src/map.c \
+  _deps/raylib-src/src/raylib.h \
+  /home/Mrpumpkin/Documents/VSC/C/platform2d/src/map.h \
   /usr/include/bits/floatn-common.h \
   /usr/include/bits/floatn.h \
   /usr/include/bits/libc-header-start.h \
@@ -154,6 +186,7 @@ game: /lib64/ld-linux-x86-64.so.2 \
   /usr/lib64/libxcb.so.1 \
   CMakeFiles/game.dir/src/enemy.c.o \
   CMakeFiles/game.dir/src/main.c.o \
+  CMakeFiles/game.dir/src/map.c.o \
   CMakeFiles/game.dir/src/platform.c.o \
   CMakeFiles/game.dir/src/player.c.o \
   _deps/raylib-build/raylib/libraylib.a
@@ -163,9 +196,17 @@ _deps/raylib-build/raylib/libraylib.a:
 
 CMakeFiles/game.dir/src/platform.c.o:
 
+CMakeFiles/game.dir/src/map.c.o:
+
 CMakeFiles/game.dir/src/main.c.o:
 
 CMakeFiles/game.dir/src/enemy.c.o:
+
+/usr/lib64/libxcb.so.1:
+
+/usr/lib64/librt.a:
+
+/usr/lib64/libc_nonshared.a:
 
 /usr/include/sys/cdefs.h:
 
@@ -188,10 +229,6 @@ CMakeFiles/game.dir/src/enemy.c.o:
 /usr/include/bits/types/__fpos_t.h:
 
 /usr/include/bits/wordsize.h:
-
-/usr/lib64/libxcb.so.1:
-
-/usr/lib64/librt.a:
 
 _deps/raylib-src/src/raylib.h:
 
@@ -239,6 +276,10 @@ CMakeFiles/game.dir/src/player.c.o:
 
 /home/Mrpumpkin/Documents/VSC/C/platform2d/src/player.h:
 
+/home/Mrpumpkin/Documents/VSC/C/platform2d/src/map.c:
+
+/usr/lib64/crtn.o:
+
 /home/Mrpumpkin/Documents/VSC/C/platform2d/src/platform.c:
 
 /lib64/ld-linux-x86-64.so.2:
@@ -263,9 +304,9 @@ CMakeFiles/game.dir/src/player.c.o:
 
 /home/Mrpumpkin/Documents/VSC/C/platform2d/src/main.c:
 
-/usr/lib64/libX11.so.6:
+/home/Mrpumpkin/Documents/VSC/C/platform2d/src/map.h:
 
-/usr/lib64/crtn.o:
+/usr/lib64/libX11.so.6:
 
 /usr/include/bits/time64.h:
 
@@ -286,5 +327,3 @@ CMakeFiles/game.dir/src/player.c.o:
 /usr/include/stdc-predef.h:
 
 /usr/lib64/libGLX.so:
-
-/usr/lib64/libc_nonshared.a:

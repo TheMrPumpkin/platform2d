@@ -1,0 +1,22 @@
+{
+    "activeFile": "world_test.tmx",
+    "fileStates": {
+        "world_test.tmx": {
+            "scale": 1.62390625,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 320.21552968344076,
+                "y": 240.16164726258054
+            }
+        },
+        "world_test.tmx#grass": {
+            "scaleInDock": 1
+        }
+    },
+    "openFiles": [
+        "world_test.tmx"
+    ],
+    "recentFiles": [
+        "world_test.tmx"
+    ]
+}

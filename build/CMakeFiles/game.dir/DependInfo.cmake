@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/Mrpumpkin/Documents/VSC/C/platform2d/src/enemy.c" "CMakeFiles/game.dir/src/enemy.c.o" "gcc" "CMakeFiles/game.dir/src/enemy.c.o.d"
   "/home/Mrpumpkin/Documents/VSC/C/platform2d/src/main.c" "CMakeFiles/game.dir/src/main.c.o" "gcc" "CMakeFiles/game.dir/src/main.c.o.d"
+  "/home/Mrpumpkin/Documents/VSC/C/platform2d/src/map.c" "CMakeFiles/game.dir/src/map.c.o" "gcc" "CMakeFiles/game.dir/src/map.c.o.d"
   "/home/Mrpumpkin/Documents/VSC/C/platform2d/src/platform.c" "CMakeFiles/game.dir/src/platform.c.o" "gcc" "CMakeFiles/game.dir/src/platform.c.o.d"
   "/home/Mrpumpkin/Documents/VSC/C/platform2d/src/player.c" "CMakeFiles/game.dir/src/player.c.o" "gcc" "CMakeFiles/game.dir/src/player.c.o.d"
   "" "game" "gcc" "CMakeFiles/game.dir/link.d"
