@@ -1,54 +1,73 @@
 #include "map.h"
-#include <stdio.h>
+#include "cJSON.h"
+#include <stdlib.h>
 
-int tileMap[MAP_H][MAP_W];
-
-void LoadMapCSV(const char *filename)
+TileMap LoadMap(const char *fileName)
 {
-    FILE *file = fopen(filename, "r");
-    if (file == NULL)
+    TileMap map = {0};
+
+    char *fileData = LoadFileText(fileName);
+    cJSON *root = cJSON_Parse(fileData);
+
+    map.width = cJSON_GetObjectItem(root, "width")->valueint;
+    map.height = cJSON_GetObjectItem(root, "height")->valueint;
+    map.tileWidth = 32;
+    map.tileHeight = 32;
+
+    cJSON *dataArray = cJSON_GetObjectItem(root, "layers");
+    cJSON *layer = cJSON_GetArrayItem(dataArray, 0);
+    cJSON *data = cJSON_GetObjectItem(layer, "data");
+
+    int size = cJSON_GetArraySize(data);
+    map.data = (int *)malloc(size * sizeof(int));
+    for (int i = 0; i < size; i++)
     {
-        printf("ERROR: Could not open CSV file %s\n", filename);
-        return;
+        map.data[i] = cJSON_GetArrayItem(data, i)->valueint;
+    }
+    // READ OBJECT LAYER
+    cJSON *objectLayer = cJSON_GetArrayItem(dataArray, 1);
+    cJSON *objects = cJSON_GetObjectItem(objectLayer, "objects");
+    int objCount = cJSON_GetArraySize(objects);
+    map.collisionCount = objCount;
+    for (int i = 0; i < objCount; i++)
+    {
+        cJSON *obj = cJSON_GetArrayItem(objects, i);
+        map.collisions[i] = (Rectangle){
+            cJSON_GetObjectItem(obj, "x")->valuedouble,
+            cJSON_GetObjectItem(obj, "y")->valuedouble,
+            cJSON_GetObjectItem(obj, "width")->valuedouble,
+            cJSON_GetObjectItem(obj, "height")->valuedouble};
     }
 
-    for (int y = 0; y < MAP_H; y++)
-    {
-        for (int x = 0; x < MAP_W; x++)
-        {
-            if (fscanf(file, "%d,", &tileMap[y][x]) != 1)
-            {
-                tileMap[y][x] = 0; // דיפולט לאוויר אם יש שגיאה
-            }
-        }
-    }
-
-    fclose(file);
-    printf("SUCCESS: Map loaded from CSV!\n");
+    cJSON_Delete(root);
+    UnloadFileText(fileData);
+    return map;
 }
 
-void DrawTileMap(Texture2D tileset)
+void DrawMap(TileMap map, Texture2D tileset)
 {
-    int tilesPerRow = tileset.width / 32; // בודק כמה TILDE יש
-    for (int y = 0; y < MAP_H; y++)
+    for (int y = 0; y < map.height; y++)
     {
-        for (int x = 0; x < MAP_W; x++)
+        for (int x = 0; x < map.width; x++)
         {
-            int tile = tileMap[y][x];
 
-            if (tile == 0)
-                continue;
+            int index = y * map.width + x;
+            int tileID = map.data[index];
 
-            tile--;
+            if (tileID > 0)
+            {
 
-            int tileX = tile % tilesPerRow; // רוחב (tile = tileset)
-            int tileY = tile / tilesPerRow; // גובה (tile = tileset)
+                int screenX = x * map.tileWidth;
+                int screenY = y * map.tileHeight;
 
-            Rectangle sourceRec = {(float)(tileX * 32), (float)(tileY * 32), 32.0f, 32.0f};
-            Rectangle destRec = {(float)(x * 32), (float)(y * 32), 32.0f, 32.0f};
-            Vector2 origin = {0.0f, 0.0f};
+                int tileCol = (tileID - 1) % 5;
+                int tileRow = (tileID - 1) / 5;
 
-            DrawTexturePro(tileset, sourceRec, destRec, origin, 0.0f, WHITE);
+                Rectangle src = {tileCol * 32, tileRow * 32, 32, 32};
+                Rectangle dst = {screenX, screenY, 32, 32}; // like a box
+                DrawTexturePro(tileset, src, dst, (Vector2){0, 0}, 0.0f, WHITE);
+                DrawRectangleLinesEx(dst, 2, GREEN);
+            }
         }
     }
 }

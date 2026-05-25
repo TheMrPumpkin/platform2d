@@ -246,6 +246,30 @@ update_mappings/fast:
 	$(MAKE) $(MAKESILENT) -f _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/update_mappings.dir/build.make _deps/raylib-build/raylib/external/glfw/src/CMakeFiles/update_mappings.dir/build
 .PHONY : update_mappings/fast
 
+src/cJSON.o: src/cJSON.c.o
+.PHONY : src/cJSON.o
+
+# target to build an object file
+src/cJSON.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/cJSON.c.o
+.PHONY : src/cJSON.c.o
+
+src/cJSON.i: src/cJSON.c.i
+.PHONY : src/cJSON.i
+
+# target to preprocess a source file
+src/cJSON.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/cJSON.c.i
+.PHONY : src/cJSON.c.i
+
+src/cJSON.s: src/cJSON.c.s
+.PHONY : src/cJSON.s
+
+# target to generate assembly for a file
+src/cJSON.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/cJSON.c.s
+.PHONY : src/cJSON.c.s
+
 src/enemy.o: src/enemy.c.o
 .PHONY : src/enemy.o
 
@@ -385,6 +409,9 @@ help:
 	@echo "... game"
 	@echo "... glfw"
 	@echo "... raylib"
+	@echo "... src/cJSON.o"
+	@echo "... src/cJSON.i"
+	@echo "... src/cJSON.s"
 	@echo "... src/enemy.o"
 	@echo "... src/enemy.i"
 	@echo "... src/enemy.s"

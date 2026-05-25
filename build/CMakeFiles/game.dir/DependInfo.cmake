@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/Mrpumpkin/Documents/VSC/C/platform2d/src/cJSON.c" "CMakeFiles/game.dir/src/cJSON.c.o" "gcc" "CMakeFiles/game.dir/src/cJSON.c.o.d"
   "/home/Mrpumpkin/Documents/VSC/C/platform2d/src/enemy.c" "CMakeFiles/game.dir/src/enemy.c.o" "gcc" "CMakeFiles/game.dir/src/enemy.c.o.d"
   "/home/Mrpumpkin/Documents/VSC/C/platform2d/src/main.c" "CMakeFiles/game.dir/src/main.c.o" "gcc" "CMakeFiles/game.dir/src/main.c.o.d"
   "/home/Mrpumpkin/Documents/VSC/C/platform2d/src/map.c" "CMakeFiles/game.dir/src/map.c.o" "gcc" "CMakeFiles/game.dir/src/map.c.o.d"

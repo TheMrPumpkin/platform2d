@@ -15,11 +15,11 @@ void player_update(Player *player)
 
     if (IsKeyDown(KEY_RIGHT))
     {
-        player->box.x += 5;
+        player->box.x += 3;
     }
     if (IsKeyDown(KEY_LEFT))
     {
-        player->box.x -= 5;
+        player->box.x -= 3;
     }
 }
 void player_render(Player *player, Texture2D texplayer)

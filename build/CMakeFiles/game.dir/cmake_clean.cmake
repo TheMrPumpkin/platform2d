@@ -1,5 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/game.dir/link.d"
+  "CMakeFiles/game.dir/src/cJSON.c.o"
+  "CMakeFiles/game.dir/src/cJSON.c.o.d"
   "CMakeFiles/game.dir/src/enemy.c.o"
   "CMakeFiles/game.dir/src/enemy.c.o.d"
   "CMakeFiles/game.dir/src/main.c.o"

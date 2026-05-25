@@ -3,12 +3,19 @@
 
 #include "raylib.h"
 
-#define MAP_W 32
-#define MAP_H 32
+typedef struct
+{
+    int width;
+    int height;
+    int tileWidth;  // 32
+    int tileHeight; // 32
+    int *data;      // ALL THE DATA
+    Rectangle collisions[100];
+    int collisionCount;
+} TileMap;
 
-extern int tileMap[MAP_H][MAP_W];
-
-void LoadMapCSV(const char *filename);
-void DrawTileMap(Texture2D tileset);
+TileMap LoadMap(const char *fileName);
+void DrawMap(TileMap map, Texture2D tileset);
+void UnloadMap(TileMap map);
 
 #endif

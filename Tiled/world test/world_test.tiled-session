@@ -1,44 +1,45 @@
 {
-    "activeFile": "world_test.tmx",
+    "activeFile": "world_test.json",
     "expandedProjectPaths": [
-        "."
     ],
-    "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
+        "": {
+            "scaleInDock": 1
+        },
         "world_test.json": {
-            "scale": 1.62390625,
-            "selectedLayer": 1,
+            "scale": 1,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 320.21552968344076,
-                "y": 240.16164726258054
+                "x": 132,
+                "y": 474
             }
         },
         "world_test.json#grass": {
             "scaleInDock": 1
         },
-        "world_test.tmx": {
-            "scale": 1.62390625,
-            "selectedLayer": 1,
+        "world_test.tmj": {
+            "scale": 1.6120312499999998,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 317.7523333012605,
-                "y": 321.4471278745309
+                "x": 320.09305030532136,
+                "y": 240.069787728991
             }
         },
-        "world_test.tmx#grass": {
+        "world_test.tmj#grass": {
             "scaleInDock": 1
         }
     },
     "last.imagePath": "/home/Mrpumpkin/Documents/VSC/C/platform2d/Textures",
     "map.height": 15,
-    "map.lastUsedFormat": "tmx",
+    "map.lastUsedFormat": "json",
     "map.width": 20,
     "openFiles": [
-        "world_test.tmx"
+        "world_test.json"
     ],
     "project": "world_test.tiled-project",
     "recentFiles": [
-        "world_test.tmx",
-        "world_test.json"
+        "world_test.json",
+        "world_test.tmj"
     ],
     "tileset.embedInMap": true
 }

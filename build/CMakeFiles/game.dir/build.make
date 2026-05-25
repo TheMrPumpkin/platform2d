@@ -72,10 +72,24 @@ include CMakeFiles/game.dir/flags.make
 CMakeFiles/game.dir/codegen:
 .PHONY : CMakeFiles/game.dir/codegen
 
+CMakeFiles/game.dir/src/cJSON.c.o: CMakeFiles/game.dir/flags.make
+CMakeFiles/game.dir/src/cJSON.c.o: /home/Mrpumpkin/Documents/VSC/C/platform2d/src/cJSON.c
+CMakeFiles/game.dir/src/cJSON.c.o: CMakeFiles/game.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/Mrpumpkin/Documents/VSC/C/platform2d/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/game.dir/src/cJSON.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/game.dir/src/cJSON.c.o -MF CMakeFiles/game.dir/src/cJSON.c.o.d -o CMakeFiles/game.dir/src/cJSON.c.o -c /home/Mrpumpkin/Documents/VSC/C/platform2d/src/cJSON.c
+
+CMakeFiles/game.dir/src/cJSON.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/game.dir/src/cJSON.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/Mrpumpkin/Documents/VSC/C/platform2d/src/cJSON.c > CMakeFiles/game.dir/src/cJSON.c.i
+
+CMakeFiles/game.dir/src/cJSON.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/game.dir/src/cJSON.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/Mrpumpkin/Documents/VSC/C/platform2d/src/cJSON.c -o CMakeFiles/game.dir/src/cJSON.c.s
+
 CMakeFiles/game.dir/src/enemy.c.o: CMakeFiles/game.dir/flags.make
 CMakeFiles/game.dir/src/enemy.c.o: /home/Mrpumpkin/Documents/VSC/C/platform2d/src/enemy.c
 CMakeFiles/game.dir/src/enemy.c.o: CMakeFiles/game.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/Mrpumpkin/Documents/VSC/C/platform2d/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/game.dir/src/enemy.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/Mrpumpkin/Documents/VSC/C/platform2d/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/game.dir/src/enemy.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/game.dir/src/enemy.c.o -MF CMakeFiles/game.dir/src/enemy.c.o.d -o CMakeFiles/game.dir/src/enemy.c.o -c /home/Mrpumpkin/Documents/VSC/C/platform2d/src/enemy.c
 
 CMakeFiles/game.dir/src/enemy.c.i: cmake_force
@@ -89,7 +103,7 @@ CMakeFiles/game.dir/src/enemy.c.s: cmake_force
 CMakeFiles/game.dir/src/main.c.o: CMakeFiles/game.dir/flags.make
 CMakeFiles/game.dir/src/main.c.o: /home/Mrpumpkin/Documents/VSC/C/platform2d/src/main.c
 CMakeFiles/game.dir/src/main.c.o: CMakeFiles/game.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/Mrpumpkin/Documents/VSC/C/platform2d/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/game.dir/src/main.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/Mrpumpkin/Documents/VSC/C/platform2d/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/game.dir/src/main.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/game.dir/src/main.c.o -MF CMakeFiles/game.dir/src/main.c.o.d -o CMakeFiles/game.dir/src/main.c.o -c /home/Mrpumpkin/Documents/VSC/C/platform2d/src/main.c
 
 CMakeFiles/game.dir/src/main.c.i: cmake_force
@@ -103,7 +117,7 @@ CMakeFiles/game.dir/src/main.c.s: cmake_force
 CMakeFiles/game.dir/src/map.c.o: CMakeFiles/game.dir/flags.make
 CMakeFiles/game.dir/src/map.c.o: /home/Mrpumpkin/Documents/VSC/C/platform2d/src/map.c
 CMakeFiles/game.dir/src/map.c.o: CMakeFiles/game.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/Mrpumpkin/Documents/VSC/C/platform2d/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/game.dir/src/map.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/Mrpumpkin/Documents/VSC/C/platform2d/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/game.dir/src/map.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/game.dir/src/map.c.o -MF CMakeFiles/game.dir/src/map.c.o.d -o CMakeFiles/game.dir/src/map.c.o -c /home/Mrpumpkin/Documents/VSC/C/platform2d/src/map.c
 
 CMakeFiles/game.dir/src/map.c.i: cmake_force
@@ -117,7 +131,7 @@ CMakeFiles/game.dir/src/map.c.s: cmake_force
 CMakeFiles/game.dir/src/platform.c.o: CMakeFiles/game.dir/flags.make
 CMakeFiles/game.dir/src/platform.c.o: /home/Mrpumpkin/Documents/VSC/C/platform2d/src/platform.c
 CMakeFiles/game.dir/src/platform.c.o: CMakeFiles/game.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/Mrpumpkin/Documents/VSC/C/platform2d/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/game.dir/src/platform.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/Mrpumpkin/Documents/VSC/C/platform2d/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/game.dir/src/platform.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/game.dir/src/platform.c.o -MF CMakeFiles/game.dir/src/platform.c.o.d -o CMakeFiles/game.dir/src/platform.c.o -c /home/Mrpumpkin/Documents/VSC/C/platform2d/src/platform.c
 
 CMakeFiles/game.dir/src/platform.c.i: cmake_force
@@ -131,7 +145,7 @@ CMakeFiles/game.dir/src/platform.c.s: cmake_force
 CMakeFiles/game.dir/src/player.c.o: CMakeFiles/game.dir/flags.make
 CMakeFiles/game.dir/src/player.c.o: /home/Mrpumpkin/Documents/VSC/C/platform2d/src/player.c
 CMakeFiles/game.dir/src/player.c.o: CMakeFiles/game.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/Mrpumpkin/Documents/VSC/C/platform2d/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/game.dir/src/player.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/Mrpumpkin/Documents/VSC/C/platform2d/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/game.dir/src/player.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/game.dir/src/player.c.o -MF CMakeFiles/game.dir/src/player.c.o.d -o CMakeFiles/game.dir/src/player.c.o -c /home/Mrpumpkin/Documents/VSC/C/platform2d/src/player.c
 
 CMakeFiles/game.dir/src/player.c.i: cmake_force
@@ -144,6 +158,7 @@ CMakeFiles/game.dir/src/player.c.s: cmake_force
 
 # Object files for target game
 game_OBJECTS = \
+"CMakeFiles/game.dir/src/cJSON.c.o" \
 "CMakeFiles/game.dir/src/enemy.c.o" \
 "CMakeFiles/game.dir/src/main.c.o" \
 "CMakeFiles/game.dir/src/map.c.o" \
@@ -153,6 +168,7 @@ game_OBJECTS = \
 # External object files for target game
 game_EXTERNAL_OBJECTS =
 
+game: CMakeFiles/game.dir/src/cJSON.c.o
 game: CMakeFiles/game.dir/src/enemy.c.o
 game: CMakeFiles/game.dir/src/main.c.o
 game: CMakeFiles/game.dir/src/map.c.o
@@ -166,7 +182,7 @@ game: /usr/lib64/libGLX.so
 game: /usr/lib64/librt.a
 game: /usr/lib64/libm.so
 game: CMakeFiles/game.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/Mrpumpkin/Documents/VSC/C/platform2d/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C executable game"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/Mrpumpkin/Documents/VSC/C/platform2d/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C executable game"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/game.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
