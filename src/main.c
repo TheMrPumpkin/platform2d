@@ -14,8 +14,8 @@ int main(void)
         .box = {
             .x = 0,
             .y = 0,
-            .width = ScreenWidth / 8,
-            .height = ScreenHeight / 4.5,
+            .width = ScreenWidth / 11,
+            .height = ScreenHeight / 6.5,
         },
         .isGrounded = true,
         .velocity = 0.0f,
@@ -27,19 +27,19 @@ int main(void)
         {.box = {.x = 400, .y = 450, .width = ScreenWidth / 1, .height = ScreenHeight / 12}},
         {.box = {.x = 400, .y = 250, .width = ScreenWidth / 8, .height = ScreenHeight / 2}}};
 
-    enemy[0] = enemy_main(100.0f, 0.0f, 100.0f, 100.0f, 2.0f, 100.0f);
+    enemy[0] = enemy_main(200.0f, 0.0f, 72.0f, 72.0f, 2.0f, 100.0f);
     bool is_running = true;
 
     Camera2D camera = {0};
     camera.target = (Vector2){player.box.x + 20.0f, player.box.y + 20.0f};
     camera.offset = (Vector2){ScreenWidth / 2.0f, ScreenHeight / 2.0f};
     camera.rotation = 0.0f;
-    camera.zoom = 1.0f;
+    camera.zoom = 1.5f;
 
     int platform_size = sizeof(platforms) / sizeof(platforms[0]);
     int enemy_size = sizeof(enemy) / sizeof(enemy[0]);
     player.box.y = 100.0;
-    player.box.x = 300.0;
+    player.box.x = 600.0;
 
     InitWindow(ScreenWidth, ScreenHeight, "GAME");
     TileMap world_test = LoadMap("Tiled/world test/world_test.json");

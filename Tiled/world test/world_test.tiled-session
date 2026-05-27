@@ -7,11 +7,11 @@
             "scaleInDock": 1
         },
         "world_test.json": {
-            "scale": 1,
-            "selectedLayer": 0,
+            "scale": 0.5,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 132,
-                "y": 474
+                "x": 1068,
+                "y": 190
             }
         },
         "world_test.json#grass": {
