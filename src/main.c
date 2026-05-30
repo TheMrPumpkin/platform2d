@@ -14,8 +14,8 @@ int main(void)
         .box = {
             .x = 0,
             .y = 0,
-            .width = ScreenWidth / 11,
-            .height = ScreenHeight / 6.5,
+            .width = 32.0f,
+            .height = 32.0f,
         },
         .isGrounded = true,
         .velocity = 0.0f,
@@ -27,14 +27,14 @@ int main(void)
         {.box = {.x = 400, .y = 450, .width = ScreenWidth / 1, .height = ScreenHeight / 12}},
         {.box = {.x = 400, .y = 250, .width = ScreenWidth / 8, .height = ScreenHeight / 2}}};
 
-    enemy[0] = enemy_main(200.0f, 0.0f, 72.0f, 72.0f, 2.0f, 100.0f);
+    enemy[0] = enemy_main(200.0f, 0.0f, 72.0f, 72.0f, 2.0f, 100.0f); // כשהיה אנימציות
     bool is_running = true;
 
     Camera2D camera = {0};
     camera.target = (Vector2){player.box.x + 20.0f, player.box.y + 20.0f};
     camera.offset = (Vector2){ScreenWidth / 2.0f, ScreenHeight / 2.0f};
     camera.rotation = 0.0f;
-    camera.zoom = 1.5f;
+    camera.zoom = 3.5f;
 
     int platform_size = sizeof(platforms) / sizeof(platforms[0]);
     int enemy_size = sizeof(enemy) / sizeof(enemy[0]);
@@ -44,7 +44,10 @@ int main(void)
     InitWindow(ScreenWidth, ScreenHeight, "GAME");
     TileMap world_test = LoadMap("Tiled/world test/world_test.json");
     Texture2D tileset = LoadTexture("Textures/grass.png");
-    Texture2D texplayer = LoadTexture("Textures/Texpumpkin.png");
+    Texture2D player_sprite = LoadTexture("Textures/player_sprite.png");
+    printf("Texture ID: %d, Width: %d, Height: %d\n", player_sprite.id, player_sprite.width, player_sprite.height);
+    player.spriteSheet = player_sprite;
+    Init_Player(&player);
     Texture2D texenemy = LoadTexture("Textures/Texapple.png");
 
     float cooldownDuration = 1.2f;
@@ -72,11 +75,6 @@ int main(void)
                 enemy_update(&enemy[i]);
                 is_running = false;
             }
-        }
-        if (player.HP > 0)
-        {
-            player_update(&player);
-            is_running = false;
         }
 
         for (int i = 0; i < world_test.collisionCount; i++)
@@ -182,7 +180,7 @@ int main(void)
                 {
                     player.HP = 3;
                     enemy[i].HP = 3;
-                    player.box = (Rectangle){100.0, 250.0, 100.0, 100.0};
+                    player.box = (Rectangle){500.0, 0.0, 32.0, 32.0};
                     enemy[i].box = (Rectangle){80.0, 50.0, 100.0, 100.0};
                 };
             }
@@ -195,10 +193,10 @@ int main(void)
         ClearBackground(SKYBLUE);
         BeginMode2D(camera);
         DrawMap(world_test, tileset);
-        player_render(&player, texplayer);
+        player_render(&player, player_sprite);
         for (int i = 0; i < enemy_size; i++)
         {
-            printf("X | %f , Y | %f\n", player.box.x, player.box.y);
+            // printf("X | %f , Y | %f\n", player.box.x, player.box.y);
             // printf("X | %f , Y | %f\n", enemy->box.x, enemy->box.y);
             // printf("HP ENEMY %d\n", enemy->HP);
             enemy_render(&enemy[i], texenemy);
@@ -222,7 +220,7 @@ int main(void)
         }
         EndDrawing();
     }
-    UnloadTexture(texplayer);
+    UnloadTexture(player_sprite);
     CloseWindow();
 
     return 0;
